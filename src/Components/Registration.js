@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useFormik } from "formik";
 import { signUpSchema } from "../Schemas";
-import "../styles.css"
+import "../styles.css";
 const initialValues = {
   name: "",
   email: "",
@@ -20,23 +20,18 @@ const Registration = () => {
       initialValues,
       validationSchema: signUpSchema,
       onSubmit: (values, action) => {
-        console.log(
-          values
-        );
+        console.log(values);
         action.resetForm();
       },
     });
-  console.log(
-    
-    errors
-  );
+  console.log(errors);
 
   return (
     <Container>
       <h1>Registration Form</h1>
-      <Form  onSubmit={handleSubmit}> 
+      <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
+          <Form.Label  class="required">Name</Form.Label>
           <Form.Control
             name="name"
             type="text"
@@ -46,23 +41,25 @@ const Registration = () => {
             onBlur={handleBlur}
           />
           {errors.name && touched.name ? (
-                      <p className="form-error">{errors.name}
-                </p>
-                    ) : null}
+            <p className="form-error">{errors.name}</p>
+          ) : null}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label  class="required">Phone Number</Form.Label>
           <Form.Control
             name="phno"
-            type="number"
+            type="text"
             placeholder="+91-....."
             value={values.phno}
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.phno && touched.phno ? (
+            <p className="form-error">{errors.phno}</p>
+          ) : null}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label  class="required">Email address</Form.Label>
           <Form.Control
             name="email"
             type="email"
@@ -71,9 +68,12 @@ const Registration = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.email && touched.email ? (
+            <p className="form-error">{errors.email}</p>
+          ) : null}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
+          <Form.Label  class="required">Password</Form.Label>
           <Form.Control
             name="password"
             type="password"
@@ -82,9 +82,12 @@ const Registration = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.password && touched.password ? (
+            <p className="form-error">{errors.password}</p>
+          ) : null}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label  class="required">Confirm Password</Form.Label>
           <Form.Control
             name="confirm_password"
             type="password"
@@ -93,9 +96,12 @@ const Registration = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.confirm_password && touched.confirm_password ? (
+            <p className="form-error">{errors.confirm_password}</p>
+          ) : null}
         </Form.Group>
         <Form.Group className="mb-3">
-          <Form.Label>Date Of Birth</Form.Label>
+          <Form.Label  class="required">Date Of Birth</Form.Label>
           <Form.Control
             name="dob"
             type="date"
@@ -104,9 +110,12 @@ const Registration = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.dob && touched.dob ? (
+            <p className="form-error">{errors.dob}</p>
+          ) : null}
         </Form.Group>
         <Form.Group controlId="formFile" className="mb-3">
-          <Form.Label>Default file input example</Form.Label>
+          <Form.Label  class="required">Default file input example</Form.Label>
           <Form.Control
             name="file"
             type="file"
@@ -114,6 +123,9 @@ const Registration = () => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
+          {errors.file && touched.file ? (
+            <p className="form-error">{errors.file}</p>
+          ) : null}
         </Form.Group>
         <Button variant="primary" type="submit">
           Submit

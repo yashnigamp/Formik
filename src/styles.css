@@ -1,4 +1,12 @@
 .form-error {
     font-size: 1rem;
     color: #b22b27;
+    text-decoration: overline;
+    text-decoration-color: chocolate;
+    text-decoration-style: dashed;
+  }
+
+  .required:after {
+    content:" *";
+    color: red;
   }
