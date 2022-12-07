@@ -1,6 +1,16 @@
 {
   "users": [
     {
+      "id": 1,
+      "name": "Yash",
+      "email": "yash.p@gmail.com",
+      "password": "intel1234",
+      "confirm_password": "intel1234",
+      "phno": "9621572892",
+      "dob": "2022-12-11",
+      "file": "C:\\fakepath\\1479135171644.jpg"
+    },
+    {
       "id": 2,
       "name": "Intel",
       "email": "intel.p@gmail.com",
@@ -9,16 +19,6 @@
       "phno": "9621572892",
       "dob": "2022-12-11",
       "file": "C:\\fakepath\\1479135171644.jpg"
-    },
-    {
-      "name": "Intel",
-      "email": "intel@gmail.com",
-      "password": "intel1234",
-      "confirm_password": "intel1234",
-      "phno": "9621572892",
-      "dob": "2022-12-11",
-      "file": "C:\\fakepath\\1479135171644.jpg",
-      "id": 3
     }
   ]
 }
