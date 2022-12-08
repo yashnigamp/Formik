@@ -4,17 +4,27 @@ import Button from "react-bootstrap/Button";
 import Modal from 'react-bootstrap/Modal';
 import Table from "react-bootstrap/Table";
 import axios from "../api/axios";
+import DataTable from './DataTable'
 const GET_URL = "/users";
 
 const User = () => {
+  //Constants
+
+  //States
   const [response, setResponse] = useState(null);
   const [show, setShow] = useState(false);
   const [id,setId] = useState();
+  //Hooks 
+  useEffect(() => {
+    fetchData();
+  }, []);
+  //Functions 
   const handleClose = () => {
     deleteData(id);
     setShow(false);
   }
   const handleShow = (id) => {
+    //console.log(event);
     setId(id);
     setShow(true);
   }
@@ -33,9 +43,7 @@ const User = () => {
     const responseData = await axios.delete(`${GET_URL}/${id}`);
     fetchData();
   }
-  useEffect(() => {
-    fetchData();
-  }, []);
+  
 
   return (
     <>
@@ -43,38 +51,7 @@ const User = () => {
         <Container>
           <h1>USERS</h1>
           <hr />
-          <Table striped bordered hover variant="dark">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              {response.map((val, key) => {
-                return (
-                  <tr key={key}>
-                    <td>{val.id}</td>
-                    <td>{val.name}</td>
-                    <td>{val.email}</td>
-                    <td>{val.phno}</td>
-                    <td>
-                      <Button
-                        variant="outline-danger"
-                        size="sm"
-                        onClick={() => handleShow(val.id)}
-                      >
-                        &#10060;
-                      </Button>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
+          <DataTable data= {response} handleDataTableClick={handleShow}/>
           <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Delete Item</Modal.Title>
